@@ -92,6 +92,37 @@ def edit_member(team):
     return team
 
 
+def save_data(team):
+    filename = input("Name of file to save: ")
+    print("Saving data...")
+    out_file = open(filename, "wt")
+
+    for x in team.keys():
+        name = str(team[x].get_name())
+        phone_number = str(team[x].get_phone_number())
+        jersey_number = str(team[x].get_jersey_number())
+        out_file.write(str(name+","+phone_number+","+jersey_number+"\n"))
+    print("Data saved.")
+    out_file.close()
+
+
+def load_data(team):
+    file_name = input("Name of file to load: ")
+    in_file = open(file_name, "rt")
+    print("File loading...")
+    while True:
+        in_line = in_file.readline()
+        if not in_line:
+            break
+        in_line = in_line[:-1]
+        name, phone_number, jersey_number = in_line.split(",")
+        print(name + " " + jersey_number + " " + phone_number)
+        team[name] = Players(name, phone_number, jersey_number)
+    print("Data loaded successfully.")
+    in_file.close()
+    return team
+
+
 def user_selection(user_input):
     if user_input is "1":
         display_team(team)
@@ -101,23 +132,13 @@ def user_selection(user_input):
         delete_member(team)
     elif user_input is "4":
         edit_member(team)
+    elif user_input is "5":
+        save_data(team)
+    elif user_input is "6":
+        load_data(team)
     elif user_input is "9":
         global input_exit
         input_exit = False
-
-
-def save_data(team):
-    filename = input("Name of file to save: ")
-    print("Saving data...")
-    out_file = open(filename, "wt")
-
-    for x in team.keys():
-        name = team[x].get_name()
-        phone_number = team[x].get_phone_number()
-        jersey_number = team[x].get_jersey_number
-        out_file.write(name+","+phone_number+","+jersey_number+"\n")
-    print("Data saved.")
-    out_file.closed()
 
 
 def main():
