@@ -1,0 +1,28 @@
+
+
+factorial(int firstInt){
+    int result = 1;
+        for(int i=0; i < firstInt; i++){
+        result = result * (firstInt--);
+        }
+    return result;
+}
+
+
+factoral2(int firstInt){
+    if(firstInt == 0){
+        System.out.println("It reached zero ")
+    }
+    firstInt * factoral2(firstInt - 1)
+}
+
+
+public Array[Cards] shuffle(Array[Cards] arr){
+    Array[Cards] result = new Array[Cards];
+    String shuffledNumber = 0;
+
+
+
+    result = ;
+
+}
